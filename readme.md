@@ -1,11 +1,35 @@
 
+## KGrid Docker Container
 
-docker build -t kgrid_activator . 
 
-docker run -p 8080:8080 -v /Users/farrisg/shelf:/var/kgrid/shelf --name kgrid_activator -d  kgrid_activator 
+### Build Image
+From the 
+```docker build -t kgrid . ```
 
-docker stop kgrid_activator
+### Create Container
+Simple 
+```docker run -p 8080:8080 --name kgrid kgrid```
 
-docker start kgrid_activator
+Mapped to local shelf and running in the backgroud
+```docker run -p 8080:8080 -v /Users/farrisg/shelf:/home/kgrid/shelf --name kgrid -d  kgrid ```
 
-docker exec -it kgrid_activator bash
+
+### Stop and Start Container
+
+```
+docker stop kgrid
+```
+
+```
+docker start kgrid
+```
+
+
+### Good to Know
+
+View Logs
+```docker logs kgrid```
+
+
+Access container 
+```docker exec -it kgrid sh```
