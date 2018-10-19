@@ -17,11 +17,11 @@ This image has no Solor,Apache Karaf 4.0.5, Fuseki 2.3.1,Apache Camel. Just Fedo
 
 Run fcrepo
 
-```docker run -p 8080:8080 kgrid/fcrepo:4.7.5  ```
+```docker run --name fcrepo-lite -p 8080:8080 kgrid/fcrepo:4.7.5  ```
 
 Run as container
 
- ```docker run -it -p 8080:8080 -d kgrid/fcrepo:4.7.5  ```
+ ```docker run -it --name fcrepo-lite -p 8080:8080 -d kgrid/fcrepo:4.7.5  ```
 
 Access the restful API
 
@@ -34,7 +34,7 @@ docker exec -it fcrepo_test bash
 ```
 Create Volume at ```/usr/local/tomcat/temp``` backups are stored there and easy to move in _golden backups_
 ```
-docker run -it -p 8080:8080 -v /Users/farrisg/fedora:/usr/local/tomcat/temp -d kgrid/fcrepo:4.7.5
+docker run -it --name fcrepo-lite -p 8080:8080 -v /Users/farrisg/fedora:/usr/local/tomcat/temp -d kgrid/fcrepo:4.7.5
 ```
 
 
