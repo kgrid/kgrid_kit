@@ -34,7 +34,7 @@ docker exec -it fcrepo_test bash
 ```
 Create Volume at ```/usr/local/tomcat/temp``` backups are stored there and easy to move in _golden backups_
 ```
-docker run -it --name fcrepo-lite -p 8080:8080 -v /Users/farrisg/fedora:/usr/local/tomcat/temp -d kgrid/fcrepo:4.7.5
+docker run -it --name fcrepo-lite -p 8080:8080 -v /var/fedora/backup:/usr/local/tomcat/temp -d kgrid/fcrepo:4.7.5
 ```
 
 
