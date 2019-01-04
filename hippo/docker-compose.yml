@@ -1,0 +1,18 @@
+version: "3.6"
+
+services:
+  activator:
+    container_name: hippo-activator
+    environment:
+        KGRID_CONFIG: "--management.info.git.mode=full"
+    image: kgrid/activator:1.0.4-rc1
+    ports:
+      - 8186:8080
+
+  library:
+    container_name: hippo-library
+    environment:
+      KGRID_CONFIG: "--management.info.git.mode=full"
+    image: kgrid/library:1.0.10-rc1
+    ports:
+      - 8185:8080
