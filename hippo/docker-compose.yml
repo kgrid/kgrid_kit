@@ -8,6 +8,8 @@ services:
     image: kgrid/activator:1.0.4-rc1
     ports:
       - 8186:8080
+    volumes:
+      - ./activator-shelf:/home/kgrid/shelf
 
   library:
     container_name: hippo-library
@@ -16,4 +18,6 @@ services:
     image: kgrid/library:1.0.10-rc1
     ports:
       - 8185:8080
+    volumes:
+      - ./library-shelf:/home/kgrid/shelf
 
