@@ -1,14 +1,14 @@
 
 ## KGrid Docker Containers
 
+### Enviroments
 
-### Activator
+#### Test (Hippo)
 
-[Activator Docker file](./activator/readme.md)
+#### Sandbox (Monkey)
 
-### Library
- 
-[Library Docker file](./library/readme.md)
+#### Reference
+
 
 ### Fcrepo
 
@@ -36,7 +36,6 @@ Create Volume at ```/usr/local/tomcat/temp``` backups are stored there and easy 
 ```
 docker run -it --name fcrepo-lite -p 8080:8080 -v /var/fedora/backup:/usr/local/tomcat/temp -d kgrid/fcrepo:4.7.5
 ```
-
 
 [Shelf integration](https://github.com/kgrid/kgrid-shelf#integration-tests) tests use a fcrepo image. This [Fcrepo image](https://hub.docker.com/r/kgrid/fcrepo/) 
 
