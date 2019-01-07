@@ -11,7 +11,7 @@
 1. Update the  The [hippo docker compose file](https://github.com/kgrid/kgrid-docker/blob/master/hippo/docker-compose.yml) based on the new images and commit those changes
 1. Access [kgrid server](./kgrid-test)
 1. Navagate to the kgrid-docker directory and run ```git pull`` to update the docker compose file
-1. From the hippo directory run ```docker-compose up -d --build
+1. From the hippo directory run ```docker-compose up -d --build```
 
 #### Sandbox (Monkey)
 
