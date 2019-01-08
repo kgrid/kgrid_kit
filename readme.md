@@ -6,10 +6,6 @@
 ## Sandbox (Monkey)
 [Monkey](https://github.com/kgrid/kgrid.github.io/wiki/sandbox) is a docker instance create via docker compose.  The [monkey docker compose file](https://github.com/kgrid/kgrid-instances/blob/master/hippo/docker-compose.yml) creates activator and library service both using file based shelf.
 
-
-## Reference
-[Reference](https://github.com/kgrid/kgrid.github.io/wiki/test) is a docker instance create via docker compose.  The [reference docker compose file](https://github.com/kgrid/kgrid-instances/blob/master/hippo/docker-compose.yml) creates activator and library service both using file based shelf.
-
 ### Release Instance
 1. Create and Push new images for [activator](http://kgrid.org/kgrid-activator/docker/) and/or [library](http://kgrid.org/kgrid-library/docker/) as needed. 
 1. Update the docker compose file for the instance (hippo or monkey) based on the new images and commit those changes
