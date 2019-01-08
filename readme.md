@@ -10,12 +10,16 @@
 1. Navagate to the kgrid-instances directory and run ```git pull``` to update the docker compose file
 1. From the hippo directory run ```docker-compose up -d --build```
 
+```docker-compose down```
+```docker-compose logs```
+
 ## Sandbox (Monkey)
 [Monkey](https://github.com/kgrid/kgrid.github.io/wiki/sandbox) is a docker instance create via docker compose.  The [monkey docker compose file](https://github.com/kgrid/kgrid-instances/blob/master/hippo/docker-compose.yml) creates activator and library service both using file based shelf.
 
 ## Reference
 [Reference](https://github.com/kgrid/kgrid.github.io/wiki/test) is a docker instance create via docker compose.  The [reference docker compose file](https://github.com/kgrid/kgrid-instances/blob/master/hippo/docker-compose.yml) creates activator and library service both using file based shelf.
 ## Fcrepo
+
 
 ### Fcrepop Lite
 This image has no Solor,Apache Karaf 4.0.5, Fuseki 2.3.1,Apache Camel. Just Fedora 4.7.5 with a file-based objects database.
@@ -34,13 +38,10 @@ Access the restful API
 
 Get to a bash shell command line iterface in the docker container
 
-```
-docker exec -it fcrepo_test bash
-```
+```docker exec -it fcrepo_test bash```
+
 Create Volume at ```/usr/local/tomcat/temp``` backups are stored there and easy to move in _golden backups_
-```
-docker run -it --name fcrepo-lite -p 8080:8080 -v /var/fedora/backup:/usr/local/tomcat/temp -d kgrid/fcrepo:4.7.5
-```
+```docker run -it --name fcrepo-lite -p 8080:8080 -v /var/fedora/backup:/usr/local/tomcat/temp -d kgrid/fcrepo:4.7.5```
 
 [Shelf integration](https://github.com/kgrid/kgrid-shelf#integration-tests) tests use a fcrepo image. This [Fcrepo image](https://hub.docker.com/r/kgrid/fcrepo/) 
 
