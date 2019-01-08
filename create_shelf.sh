@@ -11,7 +11,7 @@ if [[ -n "shelfUrl" ]]; then
 
   for i in "${repos[@]}"
   do
-     url=(https://api.github.com/repos/kgrid-objects/$i/releases/latest?access_token=604b8cbeab5731ce52144e5cbb0c999547dd262c  )
+     url=(https://api.github.com/repos/kgrid-objects/$i/releases/latest  )
      ../download.sh "$url"
   done
 
