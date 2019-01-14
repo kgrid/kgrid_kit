@@ -13,7 +13,7 @@ services:
     container_name: hippo-library
     environment:
       KGRID_CONFIG: "--kgrid.shelf.cdostore.url=filesystem:file://shelf --cors.url=*  --management.info.git.mode=full"
-    image: kgrid/library:1.0.10-rc2
+    image: kgrid/library:1.0.10-rc4
     ports:
       - 8185:8080
 
