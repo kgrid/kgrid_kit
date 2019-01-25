@@ -5,7 +5,7 @@ services:
     container_name: hippo-activator
     environment:
         KGRID_CONFIG: "--kgrid.shelf.cdostore.url=filesystem:file://shelf --cors.url=*  --management.info.git.mode=full"
-    image: kgrid/activator:1.0.4-rc13
+    image: kgrid/activator:1.0.4-rc14
     ports:
       - 8186:8080
 
@@ -13,7 +13,7 @@ services:
     container_name: hippo-library
     environment:
       KGRID_CONFIG: "--kgrid.shelf.cdostore.url=filesystem:file://shelf --cors.url=*  --management.info.git.mode=full"
-    image: kgrid/library:1.0.10-rc7
+    image: kgrid/library:1.0.10-rc8
     ports:
       - 8185:8080
 
