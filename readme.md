@@ -1,4 +1,5 @@
 # KGrid Instances
+[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/kgrid/kgrid-instances/blob/master/monkey/docker-compose.yml)
 
 ## Test (Hippo)
 [Hippo](https://github.com/kgrid/kgrid.github.io/wiki/test) is a docker instance create via docker compose.  The [hippo docker compose file](https://github.com/kgrid/kgrid-docker/blob/master/hippo/docker-compose.yml) creates activator and library service both using file based shelf.
