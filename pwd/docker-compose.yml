@@ -7,7 +7,7 @@ services:
         KGRID_CONFIG: "--kgrid.shelf.cdostore.url=filesystem:file://shelf --cors.url=*  --management.info.git.mode=full"
     image: kgrid/activator:1.0.5
     ports:
-      - 81:8080
+      - 8081:8080
 
   library:
     container_name: kgrid-library
@@ -15,6 +15,6 @@ services:
       KGRID_CONFIG: "--kgrid.shelf.cdostore.url=filesystem:file://shelf --cors.url=*  --management.info.git.mode=full"
     image: kgrid/library:1.1.0
     ports:
-      - 80:8080
+      - 8080:8080
 
 
