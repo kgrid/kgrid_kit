@@ -1,12 +1,14 @@
 #!/bin/bash
 
 source config.conf
-shelfUrl=$1
+shelfUrls=($1)
 repos=($2)
-if [[ -n "shelfUrl" ]]; then
+if [[ -n "shelfUrls" ]]; then
   rm -rf build
   mkdir build
   cd build
+
+  manifest='{"ko":['
 
   for i in "${repos[@]}"
   do
@@ -18,16 +20,25 @@ if [[ -n "shelfUrl" ]]; then
      else
        url=(https://api.github.com/repos/kgrid-objects/$i/releases/latest?access_token=$GIT_TOKEN  )
      fi
-     ../download.sh "$url"
+
+     assets=($(curl -s $url | jq -r ".assets[].browser_download_url"))
+     echo ${#assets[@]} assests downloading
+
+     for asseturl in "${assets[@]}"
+     do
+        manifest+="\"$asseturl\","
+     done
   done
 
-  for zipFile in *.zip
+  manifest=${manifest%?}
+  manifest+="]}"
+
+  for shelfUrl in "${shelfUrls[@]}"
   do
-    echo -e "Processing $zipFile"
-    fileName=${zipFile%%.*}
-    curl -X PUT "${shelfUrl}/${fileName//-//}"\
-             -H "Content-Type: multipart/form-data" \
-             -F "ko=@$zipFile"
+     printf "Load shelf $shelfUrl\n "
+     curl -X POST "${shelfUrl}"\
+         -H "Content-Type: application/json" \
+         -d "$manifest"
   done
 
 else
