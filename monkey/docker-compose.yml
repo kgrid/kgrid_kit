@@ -13,7 +13,7 @@ services:
     container_name: monkey-library
     environment:
       KGRID_CONFIG: "--kgrid.shelf.cdostore.url=filesystem:file://shelf --cors.url=*  --management.info.git.mode=full"
-    image: kgrid/library:1.1.3
+    image: kgrid/library:1.1.4
     ports:
       - 8187:8080
 

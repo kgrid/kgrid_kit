@@ -2,19 +2,19 @@ version: "3.6"
 
 services:
   activator:
-    container_name: kgrid-activator
+    container_name: lion-activator
     environment:
         KGRID_CONFIG: "--kgrid.shelf.cdostore.url=filesystem:file://shelf --cors.url=*  --management.info.git.mode=full"
     image: kgrid/activator:1.0.8
     ports:
-      - 8081:8080
+      - 8181:8080
 
   library:
-    container_name: kgrid-library
+    container_name: lion-library
     environment:
       KGRID_CONFIG: "--kgrid.shelf.cdostore.url=filesystem:file://shelf --cors.url=*  --management.info.git.mode=full"
     image: kgrid/library:1.1.4
     ports:
-      - 8080:8080
+      - 8182:8080
 
 
