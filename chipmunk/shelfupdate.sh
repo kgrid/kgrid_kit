@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo ./create_shelf.sh \
-"http://library.kgrid.org/shelf http://activator.kgrid.org" \
+../create_shelf.sh \
+"https://kgrid-library.herokuapp.com/shelf https://kgrid-activator.herokuapp.com" \
 "score opioid-collection cpic-collection example-collection cancer-risk-collection \
 icon-array script-numerate postpci labwise ipp-collection"

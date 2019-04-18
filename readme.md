@@ -1,6 +1,9 @@
 # KGrid Instances
 [![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/kgrid/kgrid-instances/master/pwd/docker-compose.yml)
 
+## Integration (Chipmunk)
+[Hippo](https://github.com/kgrid/kgrid.github.io/wiki/integration) is a [heroku](https://dashboard.heroku.com) instance.
+
 ## Test (Hippo)
 [Hippo](https://github.com/kgrid/kgrid.github.io/wiki/test) is a docker instance create via docker 
 compose.  The [hippo docker compose file](https://github.com/kgrid/kgrid-docker/blob/master/hippo/docker-compose.yml) 
@@ -26,20 +29,32 @@ creates activator and library service both using file based shelf.
 
 ### Updating a Shelf
 There are some scripts in place that will update the shelfs on each instance.
-[chipmunck](./chipmunkupdate.sh)
-[hippo](./hippoupdate.sh)
-[monkey](./monkeyupdate.sh)
-[lion](./lionupdate.sh)
+1. [chipmunck](chipmunk/shelfupdate.sh)
+1. [hippo](./hippo/shelfupdate.sh)
+1. [monkey](./monkey/shelfupdate.sh)
+1. [lion](./lion/shelfupdate.sh)
 
 The [create_shelf](./create_shelf.sh)script that will get latest released _cpic-collection_ or tagged release _labwise:1.0.0_ 
 assets from git hub and create an shelf import manifest and then call the shelf endpoint with that manifest.
 
 The following would load the hippo library with released KOs
-```./create_shelf.sh \
+```
+ ./create_shelf.sh \
    "http://hippo-activator.kgrid.org http://hippo-library.kgrid.org/shelf" \
    "opioid-collection cpic-collection \
    example-collection:1.1.0 cancer-risk-collection:1.1.0 \
-   icon-array:1.0.0 script-numerate:0.3 postpci:1.0.0 labwise:1.0.0"```
+   icon-array:1.0.0 script-numerate:0.3 postpci:1.0.0 labwise:1.0.0"
+```
+
+### Good To Know
+
+Lion environment is using named volumes for the library and activator shelves.  
+
+View the volumes 
+``` docker volume ls ``` 
+
+Rebuild with empty volumes
+``docker-compose up -d -v ```
 
 
 
