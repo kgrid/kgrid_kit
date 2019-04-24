@@ -16,7 +16,7 @@ services:
     container_name: lion-library
     environment:
       KGRID_CONFIG: "--kgrid.shelf.cdostore.url=filesystem:file://shelf --cors.url=*  --management.info.git.mode=full"
-    image: kgrid/library:1.1.4
+    image: kgrid/library:1.1.5
     ports:
       - 8182:8080
     volumes:
