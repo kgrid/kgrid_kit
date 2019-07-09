@@ -8,7 +8,7 @@ if [[ -n "shelfUrls" ]]; then
   mkdir build
   cd build
 
-  manifest='{"ko":['
+  manifest='{"manifest":['
 
   for i in "${repos[@]}"
   do
