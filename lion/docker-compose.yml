@@ -9,7 +9,7 @@ services:
     ports:
       - 8181:8080
     volumes:
-      - "activator_shelf:/home/kgrid/shelf"
+      - "activator_shelf:/usr/local/miserver/kgrid/shelf"
 
 
   library:
@@ -20,7 +20,7 @@ services:
     ports:
       - 8182:8080
     volumes:
-      - "library_shelf:/home/kgrid/shelf"
+      - "library_shelf:/usr/local/miserver/kgrid/shelf"
 
 volumes:
   activator_shelf:
