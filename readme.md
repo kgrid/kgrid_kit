@@ -24,7 +24,7 @@ creates activator and library service both using file based shelf.
 [library](http://kgrid.org/kgrid-library/docker/) as needed. 
 1. Update the docker compose file for the instance (hippo or monkey) based on the new images and commit those changes
 1. Access [kgrid server](./kgrid-test)
-1. Navagate to the kgrid-instances directory and run ```git pull``` to update the docker compose file
+1. Navagate to the kgrid-instances _/usr/local/miserver/kgrid/kgrid-instances_ directory and run ```git pull``` to update the docker compose file
 1. From the instance directory run ```docker-compose up -d```
 
 ### Updating a Shelf
@@ -44,6 +44,16 @@ The following would load the hippo library with released KOs
    "opioid-collection cpic-collection \
    example-collection:1.1.0 cancer-risk-collection:1.1.0 \
    icon-array:1.0.0 script-numerate:0.3 postpci:1.0.0 labwise:1.0.0"
+```
+
+### Acceptance Testing
+There is a simple Postman Acceptance Testing collection in the accpetance_test directory.  Using newman we can run 
+the collection passing in correct environment chipmunk, hippo, monkey, lion 
+
+example of acceptance test for activator on chipmunk
+```
+npm install
+npm run test-chipmunk
 ```
 
 ### Good To Know

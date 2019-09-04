@@ -1,0 +1,2449 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "88661d2f-e94e-46e3-93bc-58d69bff7488"
+    },
+    "item": [
+      {
+        "id": "5d38e9d6-b86e-45e6-b53d-6d7b1438d590",
+        "name": "Delete KO",
+        "request": {
+          "description": {
+            "content": "Find KO",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "kos",
+              "hello",
+              "world",
+              ""
+            ],
+            "host": [
+              "{{activator_url}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "DELETE",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "6c6abba3-c30e-410a-865a-b56ac6eb4b15",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"Status code is 204\", function () {",
+                "    pm.response.to.have.status(204);",
+                "});",
+                "",
+                ""
+              ],
+              "_lastExecutionId": "ccb93832-23da-49bb-9351-7cf4b75803aa"
+            }
+          }
+        ]
+      },
+      {
+        "id": "d62d1250-ca51-47f1-9004-aa17dd01129a",
+        "name": "Add KO manifest",
+        "request": {
+          "url": {
+            "path": [
+              "kos",
+              "manifest"
+            ],
+            "host": [
+              "{{activator_url}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "name": "Content-Type",
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"manifest\": [\n        \"https://github.com/kgrid-objects/example-collection/releases/download/1.4.0/hello-world.zip\",\n        \"https://github.com/kgrid-objects/example-collection/releases/download/1.4.0/score-calc.zip\"\n    ]\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "5efd7b86-5941-41e3-bd93-29050644fe0b",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"Status code is 201\", function () {",
+                "    pm.response.to.have.status(201);",
+                "});",
+                "",
+                "pm.test(\"Hello World Service Spec\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    console.log(jsonData);",
+                "    pm.expect(jsonData.Added).to.have.length(2);",
+                "});"
+              ],
+              "_lastExecutionId": "9c31903b-041b-49e3-a81b-45be3dc89e0f"
+            }
+          }
+        ]
+      },
+      {
+        "id": "40df1f29-295e-4b99-8d5b-77bcbcd1d2ad",
+        "name": "Activate",
+        "request": {
+          "url": {
+            "path": [
+              "activate",
+              "hello",
+              "world"
+            ],
+            "host": [
+              "{{activator_url}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "06e3a470-a945-4f2e-b9b8-55622ad0349f",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"Status code is 200\", function () {",
+                "    pm.response.to.have.status(200);",
+                "});",
+                "",
+                "",
+                "pm.test(\"Hello World Implementations\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    console.log(jsonData);",
+                "    pm.expect(jsonData).to.have.length(3);",
+                "});"
+              ],
+              "_lastExecutionId": "25961d84-fcce-482e-884b-93023f3e8711"
+            }
+          }
+        ]
+      },
+      {
+        "id": "83c53fc7-0c1c-41e4-9937-b327fdf87dc7",
+        "name": "Find KO",
+        "request": {
+          "description": {
+            "content": "Find KO",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "kos",
+              "hello",
+              "world"
+            ],
+            "host": [
+              "{{activator_url}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "06e3a470-a945-4f2e-b9b8-55622ad0349f",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"Status code is 200\", function () {",
+                "    pm.response.to.have.status(200);",
+                "});",
+                "",
+                "pm.test(\"Hello World Title\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    console.log(jsonData);",
+                "    pm.expect(jsonData.title).to.eql(\"Hello World Title\");",
+                "});",
+                "",
+                "pm.test(\"Hello World Implementations\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    console.log(jsonData);",
+                "    pm.expect(jsonData.hasImplementation).to.have.length(3);",
+                "});"
+              ],
+              "_lastExecutionId": "1f40b831-4d96-4fff-a90a-275c8499358b"
+            }
+          }
+        ]
+      },
+      {
+        "id": "bcea20aa-7230-43ec-96d7-9a1ae044420f",
+        "name": "Execute Service",
+        "request": {
+          "description": {
+            "content": "Find KO",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "hello",
+              "world",
+              "v0.3.0",
+              "welcome"
+            ],
+            "host": [
+              "{{activator_url}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n \"name\":\"Barney\"\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "06e3a470-a945-4f2e-b9b8-55622ad0349f",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"Status code is 200\", function () {",
+                "    pm.response.to.have.status(200);",
+                "});",
+                "",
+                "pm.test(\"Status Up\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    console.log(jsonData);",
+                "    pm.expect(jsonData.result).to.eql(\"Hello, Barney\");",
+                "});"
+              ],
+              "_lastExecutionId": "54848946-732b-43ca-aa04-3c4585882db0"
+            }
+          }
+        ]
+      }
+    ],
+    "event": [],
+    "variable": [],
+    "info": {
+      "_postman_id": "88661d2f-e94e-46e3-93bc-58d69bff7488",
+      "name": "Activator Acceptance",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "description": {
+        "content": "Add KO\nDelete KO\nFind KO\n",
+        "type": "text/plain"
+      }
+    }
+  },
+  "environment": {
+    "_": {
+      "postman_variable_scope": "environment",
+      "postman_exported_at": "2019-09-04T17:45:25.769Z",
+      "postman_exported_using": "Postman/6.7.4"
+    },
+    "id": "e9cc5050-2107-4569-8643-5cb8f305e364",
+    "name": "Hippo",
+    "values": [
+      {
+        "description": {
+          "content": "",
+          "type": "text/plain"
+        },
+        "type": "any",
+        "value": "https://hippo-library.kgrid.org",
+        "key": "library_url"
+      },
+      {
+        "description": {
+          "content": "",
+          "type": "text/plain"
+        },
+        "type": "any",
+        "value": "https://hippo-activator.kgrid.org",
+        "key": "activator_url"
+      }
+    ]
+  },
+  "globals": {
+    "id": "f0fdff39-d449-41ef-bdd0-2223322552d5",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 5,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 5,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 5,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 5,
+        "pending": 0,
+        "failed": 0
+      },
+      "tests": {
+        "total": 5,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 10,
+        "pending": 0,
+        "failed": 0
+      },
+      "testScripts": {
+        "total": 5,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequestScripts": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 158.8,
+      "responseMin": 11,
+      "responseMax": 640,
+      "responseSd": 241.71255656254186,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1567619604297,
+      "completed": 1567619605238
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 5,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "ee0fdebe-ee79-4aa5-9b35-ba2989b99319",
+          "httpRequestId": "221b9751-c4c1-4731-b934-a517d105666f"
+        },
+        "item": {
+          "id": "5d38e9d6-b86e-45e6-b53d-6d7b1438d590",
+          "name": "Delete KO",
+          "request": {
+            "description": {
+              "content": "Find KO",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kos",
+                "hello",
+                "world",
+                ""
+              ],
+              "host": [
+                "{{activator_url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6c6abba3-c30e-410a-865a-b56ac6eb4b15",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});",
+                  "",
+                  ""
+                ],
+                "_lastExecutionId": "ccb93832-23da-49bb-9351-7cf4b75803aa"
+              }
+            }
+          ]
+        },
+        "request": {
+          "description": {
+            "content": "Find KO",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "kos",
+              "hello",
+              "world",
+              ""
+            ],
+            "host": [
+              "hippo-activator",
+              "kgrid",
+              "org"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.16.2",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "21c47d8d-442a-4a07-b009-5a3e4f823fa3",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "hippo-activator.kgrid.org",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "DELETE",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "816c0740-4ee6-443e-afc2-e71bd4dac6d4",
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 04 Sep 2019 17:53:24 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips PHP/5.4.16"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5, max=100"
+            },
+            {
+              "key": "Connection",
+              "value": "Keep-Alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": []
+          },
+          "cookie": [],
+          "responseTime": 81,
+          "responseSize": 0
+        },
+        "id": "5d38e9d6-b86e-45e6-b53d-6d7b1438d590",
+        "assertions": [
+          {
+            "assertion": "Status code is 204",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "4fb15fe9-4835-4133-a365-f54340bbdca6",
+          "length": 5,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "490cb016-8b0d-43ce-954e-b8ebef80c02b"
+        },
+        "item": {
+          "id": "d62d1250-ca51-47f1-9004-aa17dd01129a",
+          "name": "Add KO manifest",
+          "request": {
+            "url": {
+              "path": [
+                "kos",
+                "manifest"
+              ],
+              "host": [
+                "{{activator_url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "name": "Content-Type",
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"manifest\": [\n        \"https://github.com/kgrid-objects/example-collection/releases/download/1.4.0/hello-world.zip\",\n        \"https://github.com/kgrid-objects/example-collection/releases/download/1.4.0/score-calc.zip\"\n    ]\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5efd7b86-5941-41e3-bd93-29050644fe0b",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Hello World Service Spec\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    console.log(jsonData);",
+                  "    pm.expect(jsonData.Added).to.have.length(2);",
+                  "});"
+                ],
+                "_lastExecutionId": "9c31903b-041b-49e3-a81b-45be3dc89e0f"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "kos",
+              "manifest"
+            ],
+            "host": [
+              "hippo-activator",
+              "kgrid",
+              "org"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "name": "Content-Type",
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.16.2",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "d2709376-557d-479c-b025-5dff7e686d4c",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "hippo-activator.kgrid.org",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": 231,
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"manifest\": [\n        \"https://github.com/kgrid-objects/example-collection/releases/download/1.4.0/hello-world.zip\",\n        \"https://github.com/kgrid-objects/example-collection/releases/download/1.4.0/score-calc.zip\"\n    ]\n}"
+          }
+        },
+        "response": {
+          "id": "43697a74-f26c-415d-9631-2e862343d3d1",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 04 Sep 2019 17:53:24 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips PHP/5.4.16"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5, max=99"
+            },
+            {
+              "key": "Connection",
+              "value": "Keep-Alive"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              10,
+              32,
+              32,
+              34,
+              65,
+              100,
+              100,
+              101,
+              100,
+              34,
+              32,
+              58,
+              32,
+              91,
+              32,
+              34,
+              97,
+              114,
+              107,
+              58,
+              47,
+              104,
+              101,
+              108,
+              108,
+              111,
+              47,
+              119,
+              111,
+              114,
+              108,
+              100,
+              34,
+              44,
+              32,
+              34,
+              97,
+              114,
+              107,
+              58,
+              47,
+              115,
+              99,
+              111,
+              114,
+              101,
+              47,
+              99,
+              97,
+              108,
+              99,
+              34,
+              32,
+              93,
+              10,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 640,
+          "responseSize": 57
+        },
+        "id": "d62d1250-ca51-47f1-9004-aa17dd01129a",
+        "assertions": [
+          {
+            "assertion": "Status code is 201",
+            "skipped": false
+          },
+          {
+            "assertion": "Hello World Service Spec",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "fe8894e7-08f2-4fc2-b5d6-3f2de76921c5",
+          "length": 5,
+          "cycles": 1,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "d3c0e863-b790-44e6-b266-003ade98188a"
+        },
+        "item": {
+          "id": "40df1f29-295e-4b99-8d5b-77bcbcd1d2ad",
+          "name": "Activate",
+          "request": {
+            "url": {
+              "path": [
+                "activate",
+                "hello",
+                "world"
+              ],
+              "host": [
+                "{{activator_url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "06e3a470-a945-4f2e-b9b8-55622ad0349f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Hello World Implementations\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    console.log(jsonData);",
+                  "    pm.expect(jsonData).to.have.length(3);",
+                  "});"
+                ],
+                "_lastExecutionId": "25961d84-fcce-482e-884b-93023f3e8711"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "activate",
+              "hello",
+              "world"
+            ],
+            "host": [
+              "hippo-activator",
+              "kgrid",
+              "org"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.16.2",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "71b76656-7594-4f6c-9f1c-4a530cd81d65",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "hippo-activator.kgrid.org",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "ce2ecfe7-4f4d-43c5-94e8-3166f02b6ef3",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 04 Sep 2019 17:53:24 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips PHP/5.4.16"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "232"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5, max=98"
+            },
+            {
+              "key": "Connection",
+              "value": "Keep-Alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              91,
+              123,
+              34,
+              112,
+              97,
+              116,
+              104,
+              34,
+              58,
+              34,
+              47,
+              104,
+              101,
+              108,
+              108,
+              111,
+              45,
+              119,
+              111,
+              114,
+              108,
+              100,
+              47,
+              118,
+              48,
+              46,
+              50,
+              46,
+              48,
+              47,
+              119,
+              101,
+              108,
+              99,
+              111,
+              109,
+              101,
+              34,
+              44,
+              34,
+              97,
+              99,
+              116,
+              105,
+              118,
+              97,
+              116,
+              101,
+              100,
+              34,
+              58,
+              34,
+              50,
+              48,
+              49,
+              57,
+              45,
+              48,
+              57,
+              45,
+              48,
+              52,
+              84,
+              49,
+              55,
+              58,
+              53,
+              51,
+              58,
+              50,
+              53,
+              46,
+              49,
+              49,
+              52,
+              34,
+              125,
+              44,
+              123,
+              34,
+              112,
+              97,
+              116,
+              104,
+              34,
+              58,
+              34,
+              47,
+              104,
+              101,
+              108,
+              108,
+              111,
+              45,
+              119,
+              111,
+              114,
+              108,
+              100,
+              47,
+              118,
+              48,
+              46,
+              49,
+              46,
+              48,
+              47,
+              119,
+              101,
+              108,
+              99,
+              111,
+              109,
+              101,
+              34,
+              44,
+              34,
+              97,
+              99,
+              116,
+              105,
+              118,
+              97,
+              116,
+              101,
+              100,
+              34,
+              58,
+              34,
+              50,
+              48,
+              49,
+              57,
+              45,
+              48,
+              57,
+              45,
+              48,
+              52,
+              84,
+              49,
+              55,
+              58,
+              53,
+              51,
+              58,
+              50,
+              53,
+              46,
+              49,
+              49,
+              50,
+              34,
+              125,
+              44,
+              123,
+              34,
+              112,
+              97,
+              116,
+              104,
+              34,
+              58,
+              34,
+              47,
+              104,
+              101,
+              108,
+              108,
+              111,
+              45,
+              119,
+              111,
+              114,
+              108,
+              100,
+              47,
+              118,
+              48,
+              46,
+              51,
+              46,
+              48,
+              47,
+              119,
+              101,
+              108,
+              99,
+              111,
+              109,
+              101,
+              34,
+              44,
+              34,
+              97,
+              99,
+              116,
+              105,
+              118,
+              97,
+              116,
+              101,
+              100,
+              34,
+              58,
+              34,
+              50,
+              48,
+              49,
+              57,
+              45,
+              48,
+              57,
+              45,
+              48,
+              52,
+              84,
+              49,
+              55,
+              58,
+              53,
+              51,
+              58,
+              50,
+              53,
+              46,
+              49,
+              49,
+              53,
+              34,
+              125,
+              93
+            ]
+          },
+          "cookie": [],
+          "responseTime": 29,
+          "responseSize": 232
+        },
+        "id": "40df1f29-295e-4b99-8d5b-77bcbcd1d2ad",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          },
+          {
+            "assertion": "Hello World Implementations",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "d92c0357-0550-4072-a91c-9b8da0f8c697",
+          "length": 5,
+          "cycles": 1,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "185752dc-ca9d-46b8-91f9-2cbed950b385"
+        },
+        "item": {
+          "id": "83c53fc7-0c1c-41e4-9937-b327fdf87dc7",
+          "name": "Find KO",
+          "request": {
+            "description": {
+              "content": "Find KO",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "kos",
+                "hello",
+                "world"
+              ],
+              "host": [
+                "{{activator_url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "06e3a470-a945-4f2e-b9b8-55622ad0349f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Hello World Title\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    console.log(jsonData);",
+                  "    pm.expect(jsonData.title).to.eql(\"Hello World Title\");",
+                  "});",
+                  "",
+                  "pm.test(\"Hello World Implementations\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    console.log(jsonData);",
+                  "    pm.expect(jsonData.hasImplementation).to.have.length(3);",
+                  "});"
+                ],
+                "_lastExecutionId": "1f40b831-4d96-4fff-a90a-275c8499358b"
+              }
+            }
+          ]
+        },
+        "request": {
+          "description": {
+            "content": "Find KO",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "kos",
+              "hello",
+              "world"
+            ],
+            "host": [
+              "hippo-activator",
+              "kgrid",
+              "org"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.16.2",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "b7585e5f-7938-4f68-8555-33f7fff3dc7c",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "hippo-activator.kgrid.org",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "05a15662-6547-4dea-a384-034ef9136788",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 04 Sep 2019 17:53:24 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips PHP/5.4.16"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5, max=97"
+            },
+            {
+              "key": "Connection",
+              "value": "Keep-Alive"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              10,
+              32,
+              32,
+              34,
+              64,
+              105,
+              100,
+              34,
+              32,
+              58,
+              32,
+              34,
+              104,
+              101,
+              108,
+              108,
+              111,
+              45,
+              119,
+              111,
+              114,
+              108,
+              100,
+              34,
+              44,
+              10,
+              32,
+              32,
+              34,
+              64,
+              116,
+              121,
+              112,
+              101,
+              34,
+              32,
+              58,
+              32,
+              34,
+              107,
+              111,
+              105,
+              111,
+              58,
+              75,
+              110,
+              111,
+              119,
+              108,
+              101,
+              100,
+              103,
+              101,
+              79,
+              98,
+              106,
+              101,
+              99,
+              116,
+              34,
+              44,
+              10,
+              32,
+              32,
+              34,
+              105,
+              100,
+              101,
+              110,
+              116,
+              105,
+              102,
+              105,
+              101,
+              114,
+              34,
+              32,
+              58,
+              32,
+              34,
+              97,
+              114,
+              107,
+              58,
+              47,
+              104,
+              101,
+              108,
+              108,
+              111,
+              47,
+              119,
+              111,
+              114,
+              108,
+              100,
+              34,
+              44,
+              10,
+              32,
+              32,
+              34,
+              116,
+              105,
+              116,
+              108,
+              101,
+              34,
+              32,
+              58,
+              32,
+              34,
+              72,
+              101,
+              108,
+              108,
+              111,
+              32,
+              87,
+              111,
+              114,
+              108,
+              100,
+              32,
+              84,
+              105,
+              116,
+              108,
+              101,
+              34,
+              44,
+              10,
+              32,
+              32,
+              34,
+              99,
+              111,
+              110,
+              116,
+              114,
+              105,
+              98,
+              117,
+              116,
+              111,
+              114,
+              115,
+              34,
+              32,
+              58,
+              32,
+              34,
+              75,
+              103,
+              114,
+              105,
+              100,
+              32,
+              84,
+              101,
+              97,
+              109,
+              34,
+              44,
+              10,
+              32,
+              32,
+              34,
+              100,
+              101,
+              115,
+              99,
+              114,
+              105,
+              112,
+              116,
+              105,
+              111,
+              110,
+              34,
+              32,
+              58,
+              32,
+              34,
+              84,
+              101,
+              115,
+              116,
+              32,
+              72,
+              101,
+              108,
+              108,
+              111,
+              32,
+              87,
+              111,
+              114,
+              108,
+              100,
+              32,
+              34,
+              44,
+              10,
+              32,
+              32,
+              34,
+              107,
+              101,
+              121,
+              119,
+              111,
+              114,
+              100,
+              115,
+              34,
+              32,
+              58,
+              32,
+              34,
+              116,
+              101,
+              115,
+              116,
+              32,
+              104,
+              101,
+              108,
+              108,
+              111,
+              32,
+              119,
+              111,
+              114,
+              108,
+              100,
+              34,
+              44,
+              10,
+              32,
+              32,
+              34,
+              104,
+              97,
+              115,
+              73,
+              109,
+              112,
+              108,
+              101,
+              109,
+              101,
+              110,
+              116,
+              97,
+              116,
+              105,
+              111,
+              110,
+              34,
+              32,
+              58,
+              32,
+              91,
+              32,
+              34,
+              104,
+              101,
+              108,
+              108,
+              111,
+              45,
+              119,
+              111,
+              114,
+              108,
+              100,
+              47,
+              118,
+              48,
+              46,
+              49,
+              46,
+              48,
+              34,
+              44,
+              32,
+              34,
+              104,
+              101,
+              108,
+              108,
+              111,
+              45,
+              119,
+              111,
+              114,
+              108,
+              100,
+              47,
+              118,
+              48,
+              46,
+              50,
+              46,
+              48,
+              34,
+              44,
+              32,
+              34,
+              104,
+              101,
+              108,
+              108,
+              111,
+              45,
+              119,
+              111,
+              114,
+              108,
+              100,
+              47,
+              118,
+              48,
+              46,
+              51,
+              46,
+              48,
+              34,
+              32,
+              93,
+              44,
+              10,
+              32,
+              32,
+              34,
+              64,
+              99,
+              111,
+              110,
+              116,
+              101,
+              120,
+              116,
+              34,
+              32,
+              58,
+              32,
+              91,
+              32,
+              34,
+              104,
+              116,
+              116,
+              112,
+              58,
+              47,
+              47,
+              107,
+              103,
+              114,
+              105,
+              100,
+              46,
+              111,
+              114,
+              103,
+              47,
+              107,
+              111,
+              105,
+              111,
+              47,
+              99,
+              111,
+              110,
+              116,
+              101,
+              120,
+              116,
+              115,
+              47,
+              107,
+              110,
+              111,
+              119,
+              108,
+              101,
+              100,
+              103,
+              101,
+              111,
+              98,
+              106,
+              101,
+              99,
+              116,
+              46,
+              106,
+              115,
+              111,
+              110,
+              108,
+              100,
+              34,
+              32,
+              93,
+              10,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 11,
+          "responseSize": 410
+        },
+        "id": "83c53fc7-0c1c-41e4-9937-b327fdf87dc7",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          },
+          {
+            "assertion": "Hello World Title",
+            "skipped": false
+          },
+          {
+            "assertion": "Hello World Implementations",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "106be5fe-ec26-4c8e-bd64-f62af1fb3b06",
+          "length": 5,
+          "cycles": 1,
+          "position": 4,
+          "iteration": 0,
+          "httpRequestId": "18afb827-c2ae-4289-b275-4245972ca069"
+        },
+        "item": {
+          "id": "bcea20aa-7230-43ec-96d7-9a1ae044420f",
+          "name": "Execute Service",
+          "request": {
+            "description": {
+              "content": "Find KO",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hello",
+                "world",
+                "v0.3.0",
+                "welcome"
+              ],
+              "host": [
+                "{{activator_url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"name\":\"Barney\"\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "06e3a470-a945-4f2e-b9b8-55622ad0349f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Status Up\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    console.log(jsonData);",
+                  "    pm.expect(jsonData.result).to.eql(\"Hello, Barney\");",
+                  "});"
+                ],
+                "_lastExecutionId": "54848946-732b-43ca-aa04-3c4585882db0"
+              }
+            }
+          ]
+        },
+        "request": {
+          "description": {
+            "content": "Find KO",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "hello",
+              "world",
+              "v0.3.0",
+              "welcome"
+            ],
+            "host": [
+              "hippo-activator",
+              "kgrid",
+              "org"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.16.2",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "5f4b0b65-a5b9-470b-96ef-08ff380530b2",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "hippo-activator.kgrid.org",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": 20,
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n \"name\":\"Barney\"\n}"
+          }
+        },
+        "response": {
+          "id": "b5f57d4c-6741-4d17-958e-bc0dd00a813f",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 04 Sep 2019 17:53:24 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips PHP/5.4.16"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=UTF-8"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5, max=96"
+            },
+            {
+              "key": "Connection",
+              "value": "Keep-Alive"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              10,
+              32,
+              32,
+              34,
+              114,
+              101,
+              115,
+              117,
+              108,
+              116,
+              34,
+              32,
+              58,
+              32,
+              34,
+              72,
+              101,
+              108,
+              108,
+              111,
+              44,
+              32,
+              66,
+              97,
+              114,
+              110,
+              101,
+              121,
+              34,
+              44,
+              10,
+              32,
+              32,
+              34,
+              105,
+              110,
+              102,
+              111,
+              34,
+              32,
+              58,
+              32,
+              123,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              107,
+              111,
+              34,
+              32,
+              58,
+              32,
+              123,
+              10,
+              32,
+              32,
+              32,
+              32,
+              32,
+              32,
+              34,
+              64,
+              105,
+              100,
+              34,
+              32,
+              58,
+              32,
+              34,
+              118,
+              48,
+              46,
+              51,
+              46,
+              48,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              32,
+              32,
+              34,
+              64,
+              116,
+              121,
+              112,
+              101,
+              34,
+              32,
+              58,
+              32,
+              34,
+              107,
+              111,
+              105,
+              111,
+              58,
+              73,
+              109,
+              112,
+              108,
+              101,
+              109,
+              101,
+              110,
+              116,
+              97,
+              116,
+              105,
+              111,
+              110,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              32,
+              32,
+              34,
+              105,
+              100,
+              101,
+              110,
+              116,
+              105,
+              102,
+              105,
+              101,
+              114,
+              34,
+              32,
+              58,
+              32,
+              34,
+              97,
+              114,
+              107,
+              58,
+              47,
+              104,
+              101,
+              108,
+              108,
+              111,
+              47,
+              119,
+              111,
+              114,
+              108,
+              100,
+              47,
+              118,
+              48,
+              46,
+              51,
+              46,
+              48,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              32,
+              32,
+              34,
+              116,
+              105,
+              116,
+              108,
+              101,
+              34,
+              32,
+              58,
+              32,
+              34,
+              73,
+              109,
+              112,
+              108,
+              101,
+              109,
+              101,
+              110,
+              116,
+              97,
+              116,
+              105,
+              111,
+              110,
+              32,
+              98,
+              117,
+              110,
+              100,
+              108,
+              101,
+              32,
+              118,
+              50,
+              32,
+              111,
+              102,
+              32,
+              72,
+              101,
+              108,
+              108,
+              111,
+              32,
+              87,
+              111,
+              114,
+              108,
+              100,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              32,
+              32,
+              34,
+              104,
+              97,
+              115,
+              83,
+              101,
+              114,
+              118,
+              105,
+              99,
+              101,
+              83,
+              112,
+              101,
+              99,
+              105,
+              102,
+              105,
+              99,
+              97,
+              116,
+              105,
+              111,
+              110,
+              34,
+              32,
+              58,
+              32,
+              34,
+              118,
+              48,
+              46,
+              51,
+              46,
+              48,
+              47,
+              115,
+              101,
+              114,
+              118,
+              105,
+              99,
+              101,
+              46,
+              121,
+              97,
+              109,
+              108,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              32,
+              32,
+              34,
+              104,
+              97,
+              115,
+              80,
+              97,
+              121,
+              108,
+              111,
+              97,
+              100,
+              34,
+              32,
+              58,
+              32,
+              34,
+              118,
+              48,
+              46,
+              51,
+              46,
+              48,
+              47,
+              109,
+              97,
+              105,
+              110,
+              46,
+              106,
+              115,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              32,
+              32,
+              34,
+              64,
+              99,
+              111,
+              110,
+              116,
+              101,
+              120,
+              116,
+              34,
+              32,
+              58,
+              32,
+              91,
+              32,
+              34,
+              104,
+              116,
+              116,
+              112,
+              58,
+              47,
+              47,
+              107,
+              103,
+              114,
+              105,
+              100,
+              46,
+              111,
+              114,
+              103,
+              47,
+              107,
+              111,
+              105,
+              111,
+              47,
+              99,
+              111,
+              110,
+              116,
+              101,
+              120,
+              116,
+              115,
+              47,
+              105,
+              109,
+              112,
+              108,
+              101,
+              109,
+              101,
+              110,
+              116,
+              97,
+              116,
+              105,
+              111,
+              110,
+              46,
+              106,
+              115,
+              111,
+              110,
+              108,
+              100,
+              34,
+              32,
+              93,
+              10,
+              32,
+              32,
+              32,
+              32,
+              125,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              105,
+              110,
+              112,
+              117,
+              116,
+              115,
+              34,
+              32,
+              58,
+              32,
+              123,
+              10,
+              32,
+              32,
+              32,
+              32,
+              32,
+              32,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              32,
+              58,
+              32,
+              34,
+              66,
+              97,
+              114,
+              110,
+              101,
+              121,
+              34,
+              10,
+              32,
+              32,
+              32,
+              32,
+              125,
+              10,
+              32,
+              32,
+              125,
+              10,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 33,
+          "responseSize": 461
+        },
+        "id": "bcea20aa-7230-43ec-96d7-9a1ae044420f",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          },
+          {
+            "assertion": "Status Up",
+            "skipped": false
+          }
+        ]
+      }
+    ],
+    "transfers": {
+      "responseTotal": 1160
+    },
+    "failures": [],
+    "error": null
+  }
+}

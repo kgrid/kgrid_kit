@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "88661d2f-e94e-46e3-93bc-58d69bff7488",
+		"name": "Activator Acceptance",
+		"description": "Add KO\nDelete KO\nFind KO\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Delete KO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6c6abba3-c30e-410a-865a-b56ac6eb4b15",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{activator_url}}/kos/hello/world/",
+					"host": [
+						"{{activator_url}}"
+					],
+					"path": [
+						"kos",
+						"hello",
+						"world",
+						""
+					]
+				},
+				"description": "Find KO"
+			},
+			"response": []
+		},
+		{
+			"name": "Add KO manifest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5efd7b86-5941-41e3-bd93-29050644fe0b",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Hello World Service Spec\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
+							"    pm.expect(jsonData.Added).to.have.length(2);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"manifest\": [\n        \"https://github.com/kgrid-objects/example-collection/releases/download/1.4.0/hello-world.zip\",\n        \"https://github.com/kgrid-objects/example-collection/releases/download/1.4.0/score-calc.zip\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{activator_url}}/kos/manifest",
+					"host": [
+						"{{activator_url}}"
+					],
+					"path": [
+						"kos",
+						"manifest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "06e3a470-a945-4f2e-b9b8-55622ad0349f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Hello World Implementations\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
+							"    pm.expect(jsonData).to.have.length.gte(3);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{activator_url}}/activate/hello/world",
+					"host": [
+						"{{activator_url}}"
+					],
+					"path": [
+						"activate",
+						"hello",
+						"world"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find KO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "06e3a470-a945-4f2e-b9b8-55622ad0349f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Hello World Title\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
+							"    pm.expect(jsonData.title).to.eql(\"Hello World Title\");",
+							"});",
+							"",
+							"pm.test(\"Hello World Implementations\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
+							"    pm.expect(jsonData.hasImplementation).to.have.length(3);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{activator_url}}/kos/hello/world",
+					"host": [
+						"{{activator_url}}"
+					],
+					"path": [
+						"kos",
+						"hello",
+						"world"
+					]
+				},
+				"description": "Find KO"
+			},
+			"response": []
+		},
+		{
+			"name": "Execute Service",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "06e3a470-a945-4f2e-b9b8-55622ad0349f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status Up\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
+							"    pm.expect(jsonData.result).to.eql(\"Hello, Barney\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"name\":\"Barney\"\n}"
+				},
+				"url": {
+					"raw": "{{activator_url}}/hello/world/v0.3.0/welcome",
+					"host": [
+						"{{activator_url}}"
+					],
+					"path": [
+						"hello",
+						"world",
+						"v0.3.0",
+						"welcome"
+					]
+				},
+				"description": "Find KO"
+			},
+			"response": []
+		}
+	]
+}
