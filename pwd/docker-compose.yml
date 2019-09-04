@@ -5,7 +5,7 @@ services:
     container_name: kgrid-activator
     environment:
         KGRID_CONFIG: "--kgrid.shelf.cdostore.url=filesystem:file://shelf --cors.url=*  --management.info.git.mode=full"
-    image: kgrid/activator:1.1.1
+    image: kgrid/activator:1.1.2
     ports:
       - 8081:8080
 

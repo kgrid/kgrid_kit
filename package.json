@@ -8,7 +8,6 @@
     "test-chipmunk": "newman run './acceptance_test/Activator Acceptance.postman_collection.json' -e ./acceptance_test/Chipmunk.postman_environment.json  -r cli,json --insecure",
     "test-monkey": "newman run './acceptance_test/Activator Acceptance.postman_collection.json' -e ./acceptance_test/Monkey.postman_environment.json  -r cli,json --insecure",
     "test-loin": "newman run './acceptance_test/Activator Acceptance.postman_collection.json' -e ./acceptance_test/Lion.postman_environment.json  -r cli,json --insecure"
-
   },
   "repository": {
     "type": "git",
