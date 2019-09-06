@@ -58,13 +58,13 @@ npm run test-chipmunk
 
 ### Good To Know
 
-Lion environment is using named volumes for the library and activator shelves.  
+- Lion environment is using named volumes for the library and activator shelves.  
 
-View the volumes 
+- View the volumes 
 ``` docker volume ls ``` 
 
-Rebuild with empty volumes
-``docker-compose up -d -v ```
+- Rebuild with empty volumes
+```docker-compose up -d -v ```
 
 
 
