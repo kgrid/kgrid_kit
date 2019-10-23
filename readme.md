@@ -19,7 +19,7 @@ creates activator and library service both using file based shelf.
 The [monkey docker compose file](https://github.com/kgrid/kgrid-instances/blob/master/lion/docker-compose.yml) 
 creates activator and library service both using file based shelf.
 
-### Release Instance
+## Deploy an Instance
 1. Create and Push new images for [activator](http://kgrid.org/kgrid-activator/docker/) and/or 
 [library](http://kgrid.org/kgrid-library/docker/) as needed. 
 1. Update the docker compose file for the instance (hippo or monkey) based on the new images and commit those changes
@@ -27,7 +27,7 @@ creates activator and library service both using file based shelf.
 1. Navagate to the kgrid-instances _/usr/local/miserver/kgrid/kgrid-instances_ directory and run ```git pull``` to update the docker compose file
 1. From the instance directory run ```docker-compose up -d```
 
-### Updating a Shelf
+## Updating a Shelf
 There are some scripts in place that will update the shelfs on each instance.
 1. [chipmunck](chipmunk/shelfupdate.sh)
 1. [hippo](./hippo/shelfupdate.sh)
@@ -46,7 +46,7 @@ The following would load the hippo library with released KOs
    icon-array:1.0.0 script-numerate:0.3 postpci:1.0.0 labwise:1.0.0"
 ```
 
-### Acceptance Testing
+## Acceptance Testing
 There is a simple Postman Acceptance Testing collection in the accpetance_test directory.  Using newman we can run 
 the collection passing in correct environment chipmunk, hippo, monkey, lion 
 
@@ -65,6 +65,9 @@ npm run test-chipmunk
 
 - Rebuild with empty volumes
 ```docker-compose up -d -v ```
+
+- View docker daemon logs 
+```sudo journalctl -u docker.service```
 
 
 
