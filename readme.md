@@ -20,9 +20,9 @@ The [monkey docker compose file](https://github.com/kgrid/kgrid-instances/blob/m
 creates activator and library service both using file based shelf.
 
 ## Deploy an Instance
-1. Create and Push new images for [activator](http://kgrid.org/kgrid-activator/docker/) and/or 
+1. Using Release CLI create a release which will create and push new images for [activator](http://kgrid.org/kgrid-activator/docker/) and/or 
 [library](http://kgrid.org/kgrid-library/docker/) as needed. 
-1. Update the docker compose file for the instance (hippo or monkey) based on the new images and commit those changes
+1. Update the docker compose file for the instance (hippo,monkey and/or lion) based on the new images and commit those changes
 1. Access [kgrid server](./kgrid-test)
 1. Navagate to the kgrid-instances _/usr/local/miserver/kgrid/kgrid-instances_ directory and run ```git pull``` to update the docker compose file
 1. From the instance directory run ```docker-compose up -d```
