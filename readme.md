@@ -71,7 +71,15 @@ npm run test-chipmunk
 
 
 
+### Troubleshooting
 
+If ITS instances are down:
+
+1. Log in to the ITS server (details in the kgrid-config repo)
+2. Check if docker is running
+3. Restart docker if necessary
+4. In each instance folder run ```docker-compose up -d```
+5. Update shelf if necessary by running the shelf loading script
 
 
 
